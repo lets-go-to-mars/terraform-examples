@@ -67,7 +67,7 @@ jobs:
     - uses: terraform-linters/setup-tflint@v2
       name: Setup TFLint
       with:
-        github_token: $GITHUB_TOKEN
+        github_token: ${{ secrets.GITHUB_TOKEN }}
         
 # Print TFLint version
     - name: Show version
