@@ -35,7 +35,9 @@ jobs:
 
       - name: Terraform Init
 
-        run: terraform init -backend-config="organization=${{ vars.TF_CLOUD_ORGANIZATION }}" -backend-config="token=${{ secrets.TF_API_TOKEN }}"
+        run:   |
+              cd ./code/03-one-webserver
+              terraform init -backend-config="organization=${{ vars.TF_CLOUD_ORGANIZATION }}" -backend-config="token=${{ secrets.TF_API_TOKEN }}"
       # - name: Terraform Config File
       #   run:  |
       #         echo "credentials \"app.terraform.io\" { token = \"${{ secrets.TF_API_TOKEN }}\" }" > ~/.terraformrc 
@@ -45,4 +47,6 @@ jobs:
 
 
       - name: Terraform Plan
-        run: terraform plan -var="workspace=${{ vars.TF_WORKSPACE }}"
+        run:  |
+              cd ./code/03-one-webserver
+              terraform plan -var="workspace=${{ vars.TF_WORKSPACE }}"
