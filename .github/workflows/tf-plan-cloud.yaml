@@ -49,4 +49,4 @@ jobs:
       - name: Terraform Plan
         run:  |
               cd ./code/03-one-webserver
-              terraform plan -var="workspace=${{ vars.TF_WORKSPACE }}"
+              terraform plan
