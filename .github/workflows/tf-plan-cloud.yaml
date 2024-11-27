@@ -33,6 +33,10 @@ jobs:
       - name: Terraform Init
 
         run: terraform init -backend-config="organization=${{ vars.TF_CLOUD_ORGANIZATION }}" -backend-config="token=${{ secrets.TF_API_TOKEN }}"
+      - name: Terraform Config File
+        run:  |
+              cat "credentials \"app.terraform.io\" { token = \"${{ secrets.TF_API_TOKEN }}\" }" > ~/.terraformrc
+
 
       - name: Terraform Plan
         run: terraform plan -var="workspace=${{ vars.TF_WORKSPACE }}"
